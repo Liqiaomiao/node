@@ -18,5 +18,11 @@
   "bugs": {
     "url": "https://github.com/Liqiaomiao/node/issues"
   },
-  "homepage": "https://github.com/Liqiaomiao/node#readme"
+  "homepage": "https://github.com/Liqiaomiao/node#readme",
+  "dependencies": {
+    "moment": "^2.24.0"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.10"
+  }
 }
