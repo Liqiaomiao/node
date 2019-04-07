@@ -22,7 +22,7 @@ server.on('request',(request,response)=>{
                         request.on('data',(u)=>{
                             data+=u.toString()
                         })
-                       request.on('end',(err)=>{
+                        request.on('end',(err)=>{
                            try {
                                console.log(data);
                                user.push(JSON.parse(data))

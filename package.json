@@ -19,10 +19,10 @@
     "url": "https://github.com/Liqiaomiao/node/issues"
   },
   "homepage": "https://github.com/Liqiaomiao/node#readme",
-  "dependencies": {
-    "moment": "^2.24.0"
-  },
+  "dependencies": {},
   "devDependencies": {
+    "koa": "^2.7.0",
+    "moment": "^2.24.0",
     "nodemon": "^1.18.10"
   }
 }
