@@ -1,0 +1,12 @@
+const currency = require('./2-1-currency')
+console.log('50 Candian dollars equals this amount of us dollars')
+console.log(currency.canadianToUS(50))
+console.log('30 us dollars equals this amout of Candian dollars')
+console.log(currency.usToCanadian(30))
+
+const Currency = require('./2-3-module.exports')
+const newCurrency = new Currency(0.91)
+console.log('50 Candian dollars equals this amount of us dollars')
+console.log(newCurrency.canadianToUS(50))
+console.log('30 us dollars equals this amout of Candian dollars')
+console.log(newCurrency.usToCanadian(30))
