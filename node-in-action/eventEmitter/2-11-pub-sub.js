@@ -25,6 +25,7 @@ channel.on('shutdown', function () {
     channel.emit('boardcast', '', 'the server has  shut down.\n')
     channel.removeAllListeners('boardcast')
 })
+channel.setMaxListeners(50) // for : MaxListenersExceededWarning: Possible EventEmitter memory leak detected.
 const server = net.createServer(client => {
     const id = `${ client.remoteAddress }:${ client.remotePort }`
     channel.emit('join', id, client)
