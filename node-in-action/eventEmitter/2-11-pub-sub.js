@@ -4,6 +4,11 @@ const channel = new events.EventEmitter()
 channel.clients = {}
 channel.subscription = {}
 channel.on('join', function (id, client) {
+    const welcom = `
+        welcome!
+            Guests online: ${ this.listeners('boardcast').length }
+    `
+    client.write(welcom)
     this.clients[id] = client
     this.subscription[id] = (senderId, message) => {
         if (id !== senderId) {
@@ -24,7 +29,6 @@ const server = net.createServer(client => {
     const id = `${ client.remoteAddress }:${ client.remotePort }`
     channel.emit('join', id, client)
     client.on('data', (data) => {
-        console.log('data', data.toString());
         if (data.toString() === 'shut down\r\n') {
             channel.emit('shutdown')
         }
