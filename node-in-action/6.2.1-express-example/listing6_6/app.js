@@ -40,7 +40,7 @@ app.post('/post',
     entries.submit);
 
 app.get('/register',register.form)
-
+app.post('/register',register.submit)
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
