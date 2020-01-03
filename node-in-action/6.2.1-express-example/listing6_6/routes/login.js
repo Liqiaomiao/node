@@ -7,7 +7,7 @@ exports.submit = (req, res,next) => {
     User.authenticate(data.name,data.pass,(err,user)=>{ // 检查凭证
         if(err) return next(err);
         if(user){
-            res.session.uid = user.id; // 为认证存储uid;
+            req.session.uid = user.id; // 为认证存储uid;
             res.redirect('/')
         }else {
             res.error('Sorry! invalid credentials.')
@@ -16,8 +16,10 @@ exports.submit = (req, res,next) => {
     })
 }
 exports.logout = (req, res) => {
-    req.session.destory(err=>{
+    console.log('before session dedtroy',req.session);
+    req.session.destroy(err=>{
         if(err)throw err;
+        console.log('after session destroy',req.session);
         res.redirect('/')
     })
 }

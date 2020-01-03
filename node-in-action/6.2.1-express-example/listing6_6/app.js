@@ -46,7 +46,7 @@ app.post('/register', register.submit)
 
 // 登录
 app.get('/login', login.form)
-app.post('/post', login.submit)
+app.post('/login', login.submit)
 app.get('/logout', login.logout)
 
 
