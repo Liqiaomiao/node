@@ -11,6 +11,7 @@ var entries = require('./routes/entries')
 const validate = require('./middleware/validate')
 const register = require('./routes/register')
 const messages = require('./middleware/message')
+const user = require('./middleware/user')
 const login = require('./routes/login')
 var app = express();
 
@@ -29,6 +30,7 @@ app.use(session({
   resave: false,
   saveUninitialized: true
 }))
+app.use(user)
 app.use(messages)
 
 app.get('/', entries.list);
