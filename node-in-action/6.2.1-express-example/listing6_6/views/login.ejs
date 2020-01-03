@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title><%= title %></title>
+</head>
+<body>
+<h1><%=title%></h1>
+<p>Fill in the form below to sing in!</p>
+<%include messages%>
+<form action='/login' method='post'>
+    <p>
+        <input type='text' name='user[name]' placeholder='Username' />
+    </p> <p>
+        <input type='password' name='user[pass]'
+               placeholder='Password' /> 密码是必 </p> 填项 <p>
+        <input type='submit' value='Login' />
+    </p>
+</form>
+</body>
+</html>

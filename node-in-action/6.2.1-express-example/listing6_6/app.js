@@ -11,6 +11,7 @@ var entries = require('./routes/entries')
 const validate = require('./middleware/validate')
 const register = require('./routes/register')
 const messages = require('./middleware/message')
+const login = require('./routes/login')
 var app = express();
 
 // view engine setup
@@ -39,8 +40,16 @@ app.post('/post',
     validate.lengthAbove('entry[title]',4),
     entries.submit);
 
-app.get('/register',register.form)
-app.post('/register',register.submit)
+// 注册
+app.get('/register', register.form)
+app.post('/register', register.submit)
+
+// 登录
+app.get('/login', login.form)
+app.post('/post', login.submit)
+app.get('/logout', login.logout)
+
+
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
