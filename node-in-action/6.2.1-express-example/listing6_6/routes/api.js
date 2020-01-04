@@ -25,6 +25,13 @@ exports.entries = (req, res, next) => {
     const page = req.page;
     Entry.getRange(page.from, page.to, (err, entries) => {
         if (err) return next(err)
-        res.json(entries)
+        res.format({
+            json: () => {
+                res.send(entries)
+            },
+            xml: () => {
+                res.render('entries/xml', { entries })
+            }
+        })
     })
 }
