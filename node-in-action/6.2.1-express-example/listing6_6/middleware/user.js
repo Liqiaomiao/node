@@ -1,5 +1,9 @@
 const User = require('../models/user');
 module.exports = (req, res, next) => {
+    if(req.remoteUser){
+        res.locals.user = req.remoteUser
+    }
+    console.log('after set remoteUert')
     const uid = req.session.uid; // 从会话中去除已登录的用户的ID
     if (!uid) return next();
     User.get(uid, (err, user) => { // 从Redis中取出已登录用户的数据
