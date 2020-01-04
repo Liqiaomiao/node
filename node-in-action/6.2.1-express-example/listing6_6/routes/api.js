@@ -1,8 +1,10 @@
 const auth = require('basic-auth')
 const express = require('express')
 const User = require('../models/user')
+const Entry = require('../models/entry')
 exports.auth = (req, res, next) => {
-    const { name, pass } = auth
+    if (!auth(req)) return next()
+    const { name, pass } = auth(req)
     console.log(name, pass);
     User.authenticate(name, pass, (err, user) => {
         if (user) req.remoteUser = user;
@@ -20,5 +22,9 @@ exports.add = (req, res, next) => {
 
 }
 exports.entries = (req, res, next) => {
-
+    const page = req.page;
+    Entry.getRange(page.from, page.to, (err, entries) => {
+        if (err) return next(err)
+        res.json(entries)
+    })
 }
