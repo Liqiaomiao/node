@@ -28,12 +28,12 @@ class User {
     }
 
     static authenticate (name, pass, cb) { // 用户名和密码认证
-        User.getByName(name,(err,user)=>{
-            if(err)return cb(err)
-            if(!user.id)return cb() // 用户不存在
-            bcrypt.hash(pass,user.salt,(err,hash)=>{ // 对给出的密码做哈希处理
-                if(err) return cb(err)
-                if(hash === user.pass) return cb(null,user) // 匹配发现项
+        User.getByName(name, (err, user) => {
+            if (err) return cb(err)
+            if (!user.id) return cb() // 用户不存在
+            bcrypt.hash(pass, user.salt, (err, hash) => { // 对给出的密码做哈希处理
+                if (err) return cb(err)
+                if (hash === user.pass) return cb(null, user) // 匹配发现项
                 cb() // 密码无效
             })
         })
@@ -76,6 +76,13 @@ class User {
         })
 
 
+    }
+
+    toJSON () {
+        return {
+            id: this.id,
+            name: this.name
+        }
     }
 }
 
