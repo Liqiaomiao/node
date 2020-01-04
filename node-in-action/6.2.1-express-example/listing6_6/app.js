@@ -13,6 +13,7 @@ const register = require('./routes/register')
 const messages = require('./middleware/message')
 const user = require('./middleware/user')
 const login = require('./routes/login')
+const api = require('./routes/api')
 var app = express();
 
 // view engine setup
@@ -50,6 +51,11 @@ app.post('/register', register.submit)
 app.get('/login', login.form)
 app.post('/login', login.submit)
 app.get('/logout', login.logout)
+
+//reset api
+app.get('/api/user/:id',api.user)
+app.get('/api/entries/:page?',api.entries)
+app.post('/api/entry',api.add)
 
 
 // catch 404 and forward to error handler
