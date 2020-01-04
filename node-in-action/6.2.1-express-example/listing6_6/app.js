@@ -14,6 +14,8 @@ const messages = require('./middleware/message')
 const user = require('./middleware/user')
 const login = require('./routes/login')
 const api = require('./routes/api')
+const Entry = require('./models/entry')
+const page = require('./middleware/page')
 var app = express();
 
 // view engine setup
@@ -31,6 +33,7 @@ app.use(session({
   resave: false,
   saveUninitialized: true
 }))
+app.use(api.auth)
 app.use(user)
 app.use(messages)
 
@@ -54,8 +57,8 @@ app.get('/logout', login.logout)
 
 //reset api
 app.get('/api/user/:id',api.user)
-app.get('/api/entries/:page?',api.entries)
-app.post('/api/entry',api.add)
+app.get('/api/entries/:page?',page(Entry.count,2),api.entries)
+app.post('/api/entry',entries.submit)
 
 
 // catch 404 and forward to error handler
