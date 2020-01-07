@@ -12,6 +12,7 @@
   "dependencies": {
     "ejs": "^3.0.1",
     "github-flavored-markdown": "^1.0.1",
-    "hogan.js": "^3.0.2"
+    "hogan.js": "^3.0.2",
+    "pug": "^2.0.4"
   }
 }
