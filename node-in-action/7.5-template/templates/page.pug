@@ -1,6 +1,16 @@
 extends layout
 block title
     title Message
+
+block append scripts
+    script(src=baseUrl+'jquery-ui.min.js')
+
+block style
+    link(rel="stylesheet", href=baseUrl+"themes/smoothness/jquery-ui.css")
+
 block content
+    - count = 0
     each message in messages
-        p=message
+        - count = count + 1
+        div(id='message_'+count) #{message}
+    script(src='./jq.js')
