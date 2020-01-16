@@ -15,4 +15,15 @@ const addTest = ()=>{
     assert.notEqual(todo.length,0,'1 item shoule exist');
     testsCompleted++
 }
-addTest()
+const doAsyncTest= (cb)=>{
+    todo.doAsycn(value=>{
+        console.log('async test value',value);
+        assert.ok(value,'callback should be passed true')
+        testsCompleted++
+        cb();
+    })
+
+}
+doAsyncTest(()=>{
+    console.log('async test over')
+})

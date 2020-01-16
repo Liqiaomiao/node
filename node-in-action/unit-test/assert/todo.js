@@ -13,7 +13,7 @@ class Todo{
        return this.todos.length
     }
     doAsycn(cb){
-        setTimeout(db,2000,true)
+        setTimeout(cb,2000,true)
     }
 }
 module.exports = Todo
