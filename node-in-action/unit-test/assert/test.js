@@ -2,7 +2,7 @@ const Todo = require('./todo')
 const todo = new Todo()
 const assert = require('assert')
 let testsCompleted = 0
-function deleteTest() {
+const deleteTest = ()=> {
     todo.add('Delete Me')
     assert.equal(todo.length,1,'1 item shoule exist')
     todo.deleteAll()
@@ -24,6 +24,12 @@ const doAsyncTest= (cb)=>{
     })
 
 }
+const throwsTest=(cb)=>{
+    assert.throws(todo.add,/requires/);
+}
+deleteTest()
+addTest()
+throwsTest()
 doAsyncTest(()=>{
-    console.log('async test over')
+    console.log(`Completed ${testsCompleted} tests`);
 })
