@@ -2,6 +2,12 @@ const db = []
 exports.saveSync = (doc) => {
     db.push(doc)
 }
+exports.save = (doc,cb)=>{
+    db.push(doc)
+    if(cb){
+        setTimeout(cb,2000)
+    }
+}
 exports.getdb = ()=>{
     return db
 }

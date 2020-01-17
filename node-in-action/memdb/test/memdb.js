@@ -1,8 +1,17 @@
 const memdb = require('..');
 const assert = require('assert');
 describe('memb', () => {
-    beforeEach(()=>{
+    beforeEach((done)=>{
         memdb.clear()
+    })
+    describe('synchronous .save(doc)', () => {
+        it('should have the document', (done) => {
+            const pet = {name: 'Tobi'}
+            memdb.save(pet)
+            const ret = memdb.first({name: 'Tobi'})
+            assert(pet == ret)
+            done()
+        })
     })
     describe('synchronous .saveSync(doc)', () => {
         it('should have the document', () => {
